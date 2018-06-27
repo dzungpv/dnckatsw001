@@ -6,8 +6,8 @@ The module include an external antena can reach 200m distant: *Z-0001 by WEBEE*.
 
 #### Where to buy:
 
-- Include 2 module, kit and programing/debug tool: https://www.aliexpress.com/store/product/Network-of-things-things-ZigBee-wireless-module-CC2530-development-kit-learning-board-intelligent-hardware-control/2980023_32806496292.html
-- Only the module: https://www.aliexpress.com/item/CC2530-Zigbee-UART-Wireless-Core-Board-Development-Board-CC2530F256-Serial-Port-Wireless-Module-24MHz/32767470382.html
+- Include 2 module, kit and programing/debug tool: (https://www.aliexpress.com/store/product/Network-of-things-things-ZigBee-wireless-module-CC2530-development-kit-learning-board-intelligent-hardware-control/2980023_32806496292.html)
+- Only the module: (https://www.aliexpress.com/item/CC2530-Zigbee-UART-Wireless-Core-Board-Development-Board-CC2530F256-Serial-Port-Wireless-Module-24MHz/32767470382.html)
 
 ![My product](https://raw.githubusercontent.com/dzungpv/dnckatsw001/master/dnckatsw001.jpg)
 
