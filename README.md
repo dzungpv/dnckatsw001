@@ -1,37 +1,34 @@
-## Welcome to GitHub Pages
+## Ligh Switch base on Samplight Z-Stack Home 1.2.2a for CC2530, 2538 SOC
 
-You can use the [editor on GitHub](https://github.com/dzungpv/dnckatsw001/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+### Step 1:
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Download Z-Stack Home 1.2.2a it is free but require to regiter http://www.ti.com/tool/Z-STACK-ARCHIVE
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+### Step 2:
+Edit file C:\Texas Instruments\Z-Stack Home 1.2.2a.44539\Projects\zstack\HomeAutomation\SampleLight\Source\zcl_samplelight_data.c with those infor:
+```
+const uint8 zclSampleLight_ManufacturerName[] = { 6, 'D','N','C','K','A','T' };
+const uint8 zclSampleLight_ModelId[] = { 11, 'D','N','C','K','A','T','_','S','0','0','1' };
+const uint8 zclSampleLight_DateCode[] = { 16, '2','0','1','8','0','6','2','3',' ',' ',' ',' ',' ',' ',' ',' ' };
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Step 3:
+Add report state code to zclSampleLight_LcdDisplayUpdate:
+```
+  //report state
+  zclSampleLightSeqNumState++;
+  zclReportCmd_t rptcmd;
+  rptcmd.numAttr = 1;
+  rptcmd.attrList[0].attrID = ATTRID_ON_OFF;
+  rptcmd.attrList[0].dataType = ZCL_DATATYPE_BOOLEAN;
+  rptcmd.attrList[0].attrData = (void *)(&zclSampleLight_OnOff);
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/dzungpv/dnckatsw001/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+  // Set destination address to indirect
+  zclSampleLight_DstAddr.addrMode = (afAddrMode_t)Addr16Bit;
+  zclSampleLight_DstAddr.addr.shortAddr = 0;
+  zclSampleLight_DstAddr.endPoint=1;
+  zcl_SendReportCmd(SAMPLELIGHT_ENDPOINT,&zclSampleLight_DstAddr, ZCL_CLUSTER_ID_GEN_ON_OFF, &rptcmd, ZCL_FRAME_SERVER_CLIENT_DIR, true, zclSampleLightSeqNumState );
+  ```
+  
+### Step 4:
+Disable ZCL_EZMODE and HOLD_AUTO_START build tag by add 'x' before each.
