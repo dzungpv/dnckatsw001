@@ -27,7 +27,7 @@ Please check: [Zigbee2Mqtt](https://github.com/Koenkk/zigbee2mqtt)
 ### Build it from scratch:
 
 #### Step 1:
-Download Z-Stack Home 1.2.2a it is free but require to regiter [Z-Stack Home](http://www.ti.com/tool/Z-STACK-ARCHIVE)
+Download Z-Stack Home 1.2.2a it is free but require to register [Z-Stack Home](http://www.ti.com/tool/Z-STACK-ARCHIVE)
 
 #### Step 2:
 Edit file C:\Texas Instruments\Z-Stack Home 1.2.2a.44539\Projects\zstack\HomeAutomation\SampleLight\Source\zcl_samplelight_data.c with those infor:
